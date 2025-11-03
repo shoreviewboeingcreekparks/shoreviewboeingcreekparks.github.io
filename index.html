@@ -2,11 +2,217 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restore Forests</title>
 
-  <title>Shoreline & Boeing Creek Parks</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            background-color: #228B22;
+            color: white;
+            width: 100%;
+            margin: 0;
+            padding: 20px;
+            font-family: Chalkboard, "Chalkboard SE", "Comic Sans MS", cursive;
+            font-style: normal;
+        }
+        h2 {
+            color: #228B22;
+            margin: 20px 0;
+            padding: 20px 0;
+            font-family: Chalkboard, "Chalkboard SE", "Comic Sans MS", cursive;
+            font-style: normal;
+        }
+        #map {
+            height: 500px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px 0;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        #install {
+            border-collapse: collapse;
+            margin: 20px 0;
+            max-width: 600px;
+        }
+        #install th, #install td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+        }
+        #install th {
+            background-color: #228B22;
+            color: white;
+        }
+        #install tr:hover {
+            background-color: #ddd;
+        }
+        td:last-child {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
-<h1>Shoreline & Boeing Creek Parks</h1>
+<h1> RESTORE FORESTS  <br> Saturdays 10am @ Dog Park
+</h1>
+
+<div id="map"></div>
+
+
+<h2>Shoreline Day</h2>
+<p>Sat Nov 15th 2025. Join our biggest event of the year.
+
+    <br> We've cleared out invasives. Now we install our new plants!</p>
+
+
+<table id="install" style="margin: auto; width: 50%;">
+    <tr>
+        <th>Common Name</th>
+        <th>Fancy Name</th>
+        <th>#</th>
+    </tr>
+    <tr>
+        <td>grand fir</td>
+        <td>Abies grandis</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>Western red cedar</td>
+        <td>Thuja plicata</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>Western hemlock</td>
+        <td>Tsuga heterophylla</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>serviceberry</td>
+        <td>Amalenchier alnifolia</td>
+        <td>16</td>
+    </tr>
+    <tr>
+        <td>Sitka willow</td>
+        <td>Salix sitchensis</td>
+        <td>50</td>
+    </tr>
+    <tr>
+        <td>red elderberry</td>
+        <td>Sambucus racemosa</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>oceanspray</td>
+        <td>Holodiscus discolor</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>tall Oregon grape</td>
+        <td>Mahonia aquifolium</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>Vaccinium ovatum</td>
+        <td>Vaccinium ovatum</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>sword fern</td>
+        <td>Polystichum munitum</td>
+        <td>51</td>
+    </tr>
+</table>
+
+<h2>Who</h2>
+<p>Volunteers sponsored by the Green City Partnership and City of Shoreline, WA.</p>
+<p>Current forest stewards (event organizers) are Ieva, Colby, and Jason. We report to Kiley and Joy Wood.</p>
+
+<h2>What</h2>
+<p>We restore urban forests. We remove unwanted (invasive) species, rescue & protect existing natives,
+    and install new natives.</p>
+<p>2014: restored ~2 basketball courts; cleared blackberry bramble; installed ~500 native plants; trail building; erosion abatement.</p>
+<p>2015: (in progress) restoring ~15,000 sqft (~4 basketball courts); clearing ivy, holly, blackberry; installing ~200 native plants, complementing current vegetation. </p>
+
+
+<h2>Where</h2>
+<p>We currently have two project sites.
+    <br> "Coyote Peak" is southwest of the Off-leash Area's parking lot. Meet here for Shoreline Day Sat Nov 15th, 2025.
+    <br>"Bobcat" is immediately east of the Off-leash Area's north entrance. We've been working here the last few months.</p>
+
+
+<h2>When</h2>
+<p>Join us any given Saturday. No skill or experience needed. We provide training, tools, and fun tasks. You may
+    pre-register
+    via <a href="https://shoreline.greencitypartnerships.org/event/map/?park=boeing-creek-park">Shoreline Green City Partnership</a> portal or we can handle it together in person.</p>
+
+<p>NOTE: Events are canceled for high winds (risk from falling trees) and frozen ground (too hard to dig).
+    We continue to work thru rain, especially when we have plants to install.</p>
+
+<h2>How</h2>
+<p>First Year</p>
+<p>We remove invasives, cover the exposed area with mulch, install a mix of native plants; ground cover, shrubs, and conifers.</p>
+<p>Ninebark is our secret weapon in combatting blackberry and other invasives. The shrub ninebark leafs out earlier
+than blackberries, denying blackberries access to sunlight.</p>
+<p> Techniques for invasive removal vary by plant.
+    Blackberries: cut down stalks, dig out root balls, best effort removing roots (breadth over depth).
+    English Ivy: roll up like a burrito. Clear 6' area around trees. Sever any climbing ivy at eye level.
+    Holly, Laurel: must be completely removed.
+</p>
+<p>Removed plants are piled onto "compost rafts", beds of crisscrossing branches,
+    high enough off the ground to prevent rerooting.</p>
+<p>"Survival" mulch rings for each installed plant. Depth of 8"-12" keeps plants alive thru summer draught;
+    without manual watering.</p>
+<p>Years 2 &amp; 3</p>
+<p>Weed restored areas. Maybe add mulch as needed.</p>
+<p>Year 4 &amp; Beyond</p>
+<p>Nothing! Restored area is now a healthy self-sufficient forest. We've moved on to restore the next project area.</p>
+
+
+<h2>Thanks</h2>
+<p>We're immensely grateful for the support and generosity of park regulars and volunteers. Including,
+but not limited to:</p>
+
+<li>
+    <ul>Alla & Peter: trees (fir, cedar, etc) </ul>
+    <ul>Ieva: trees </ul>
+    <ul>Leslie: memorial tree for her doggo</ul>
+    <ul>Sarah: dozens of cedar stake posts</ul>
+    <ul>Ka: water jugs, tools, fencing</ul>
+</li>
+
+<hr>
+<p>Updated 2025-11-03 8:00a</p>
+<script>
+    // Initialize the map centered on Off-leash Dog Park in Shoreline, WA, behind the
+    // Shoreline Community College
+    var map = L.map('map').setView([47.749181, -122.364214], 16);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
+    }).addTo(map);
+
+    // Add marker for Dog Park
+    L.marker([47.749181, -122.364214])
+        .addTo(map)
+        .bindPopup('Project Site');
+        // .openPopup();
+
+</script>
 </body>
 </html>
